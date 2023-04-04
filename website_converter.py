@@ -1,5 +1,6 @@
 import argparse
 import os
+from concurrent.futures import ThreadPoolExecutor
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -32,6 +33,8 @@ def main():
                         help="Destination directory for the output file.")
     parser.add_argument(
         "-f", "--file", help="File containing a list of URLs and names, one per line.")
+    parser.add_argument("-t", "--threads", type=int, default=5,
+                        help="Number of threads for parallel processing.")
 
     args = parser.parse_args()
 
@@ -42,12 +45,17 @@ def main():
         capture_screenshot(args.url, args.destination, args.name)
 
     if args.file:
+        tasks = []
+
         with open(args.file, "r") as f:
             lines = f.readlines()
 
         for line in lines:
             url, name = line.strip().split()
-            capture_screenshot(url, args.destination, name)
+            tasks.append((url, args.destination, name))
+
+        with ThreadPoolExecutor(max_workers=args.threads) as executor:
+            executor.map(lambda task: capture_screenshot(*task), tasks)
 
 
 if __name__ == "__main__":

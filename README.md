@@ -20,7 +20,7 @@ Run the script using the following command:
 
 
 ```
-python website_converter.py -u <url> -n <name> -d <destination> -f <file>
+python website_converter.py -u <url> -n <name> -d <destination> -f <file> -t <threads>
 
 Arguments
 
@@ -28,6 +28,7 @@ Arguments
     -n, --name: Output file name without extension.
     -d, --destination: Destination directory for the output file (default: current directory).
     -f, --file: File containing a list of URLs and names, one per line.
+    -t, --threads: Number of threads for parallel processing (default: 5).
 ```
 
 ## Examples
