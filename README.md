@@ -57,8 +57,10 @@ python website_converter.py -f urls.txt -d screenshots
 ```
 
 This command processes each URL in the urls.txt file, captures the webpages, and saves them as PNG images in the "screenshots" directory with the specified names.    
-Dependencies
 
-Python 3
-Selenium
-WebDriver Manager for Python
+## Dependencies
+
+Python 3  
+Selenium  
+WebDriver  
+Manager for Python
