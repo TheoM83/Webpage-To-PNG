@@ -1,4 +1,4 @@
-# Webpage to PNG Converter
+# Webpage to PNG
 
 This command-line tool captures entire webpages as PNG images. It allows you to input single URLs or process multiple URLs from a text file. The resulting images are saved in the specified directory with the provided file names.
 
